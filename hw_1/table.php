@@ -22,12 +22,12 @@
 <table>
 
     <?php
-    $table = '<th>  </th>';
-    for ($i = 1; $i <= 10; $i++) {
+    $table = '<th>' . ' ' . '</th>';
+    for ($i = 0; $i <= 10; $i++) {
         $table .= "<th>$i</th>";
     }
 
-    for ($i = 1; $i <= 10; $i++) {
+    for ($i = 0; $i <= 10; $i++) {
         $table .= "<tr><td><strong>$i</strong></td>";
         for ($j = 1; $j <= 10; $j++) {
             $result = $i * $j;
