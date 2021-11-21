@@ -13,13 +13,13 @@ function task1($array, $param = true): string
         foreach ($array as $value) {
             $getPrintArray .= "<p>$value</p>";
         }
-    } elseif ($param == true) {
-        return implode(',', $array);
+    } else {
+        echo implode(',', $array);
     }
     return $getPrintArray;
 }
 
-// echo task1($array);
+// echo task1($array, false);
 
 /*
  * Задание #2
@@ -53,13 +53,14 @@ function task2($operator, ...$nums)
             }
 
         }
-        return $acc;
+        $result = $acc;
     } else {
-        return 'input all arguments!';
+        $result = 'input all arguments!';
     }
+    return $result;
 }
 
-// echo task2('?', 5,5);
+// echo task2('+', 5,5);
 
 /*
  * Задание #3 (Использование рекурсии не обязательно)
@@ -73,22 +74,21 @@ function task2($operator, ...$nums)
 function task3($a, $b)
 {
     $table = '<table>';
-    if (is_int($a) && is_int($b)) {
-        for ($i = 1; $i <= $a; $i++) {
-            $table .= "<th>$i</th>";
-            for ($j = 1; $j <= $b; $j++) {
-                $table .= '<td>' . $i * $j . '</td>';
-            }
-            // echo '</br>' . PHP_EOL;
-            $table .= '</tr>';
-        }
-    } else {
+    if (!is_int($a) || !is_int($b)) {
         print "Non valid arguments";
+        return null;
     }
-    print_r($table);
+        for ($i = 1; $i <= $a; $i++) {
+        $table .= "<th>$i</th>";
+        for ($j = 1; $j <= $b; $j++) {
+            $table .= '<td>' . $i * $j . '</td>';
+        }
+        $table .= '</tr>';
+    }
+        print_r($table);
 }
 
-// task3(12, 8);
+ // task3(12, '');
 
 /* Задание #4
     * Выведите информацию о текущей дате в формате 31.12.2016 23:59
@@ -109,6 +109,7 @@ function task4()
     echo 'unix time: ' . $getUnixTime;
     echo '</pre>';
 }
+
 // echo task4();
 
 /*
@@ -130,15 +131,19 @@ $str2 = str_replace('Две', 'Три', $str2);
     * Создайте файл test.txt средствами PHP. Поместите в него текст - “Hello again!”
     * Напишите функцию, которая будет принимать имя файла, открывать файл и выводить содержимое на экран.
  */
-function createFile($name) {
-   return file_put_contents($name, "Hello again!", FILE_APPEND );
+function createFile($name)
+{
+    return file_put_contents($name, "Hello again!", FILE_APPEND);
 }
- // print createFile('test.txt');
+
+// print createFile('test.txt');
 
 
-function task6($file) {
+function task6($file)
+{
     return file_get_contents($file);
 }
+
 print task6('test.txt');
 
 
